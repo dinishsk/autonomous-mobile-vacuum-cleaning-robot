@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<robot name="amvcr" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find amvcr_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find amvcr_description)/urdf/amvcr.trans" />
+<xacro:include filename="$(find amvcr_description)/urdf/amvcr.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.0019434846856806773 1.1685172611447414e-16 0.07153434518302298" rpy="0 0 0"/>
+    <mass value="1.849317492576436"/>
+    <inertia ixx="0.010933" iyy="0.011094" izz="0.017845" ixy="-0.0" iyz="0.0" ixz="-0.000233"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find amvcr_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find amvcr_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="5.192212519479262e-18 0.009000170419138878 -7.450579389556289e-11" rpy="0 0 0"/>
+    <mass value="0.025453686334209087"/>
+    <inertia ixx="4e-06" iyy="6e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.106049 -0.022" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find amvcr_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.106049 -0.022" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find amvcr_description)/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="5.192212519479262e-18 -0.009000170419138837 -7.450579389556289e-11" rpy="0 0 0"/>
+    <mass value="0.025453686334209087"/>
+    <inertia ixx="4e-06" iyy="6e-06" izz="4e-06" ixy="0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 0.106049 -0.022" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find amvcr_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 0.106049 -0.022" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find amvcr_description)/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin xyz="1.3877787807814457e-17 -5.9081868368592115e-18 0.012500000000000039" rpy="0 0 0"/>
+    <mass value="0.09159313381541043"/>
+    <inertia ixx="3.3e-05" iyy="3.3e-05" izz="5.6e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0535 -0.0 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find amvcr_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0535 -0.0 -0.141" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find amvcr_description)/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="basetoleft" type="continuous">
+  <origin xyz="0.0 0.106049 0.022" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="0.0 1.0 0.0"/>
+</joint>
+
+<joint name="basetoright" type="continuous">
+  <origin xyz="0.0 -0.106049 0.022" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="0.0 -1.0 0.0"/>
+</joint>
+
+<joint name="basetolidar" type="continuous">
+  <origin xyz="0.0535 0.0 0.141" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+</robot>

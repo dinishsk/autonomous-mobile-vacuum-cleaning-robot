@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<robot name="amvcr" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<transmission name="basetoleft_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="basetoleft">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="basetoleft_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="basetoright_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="basetoright">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="basetoright_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="basetolidar_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="basetolidar">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="basetolidar_actr">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+</robot>
